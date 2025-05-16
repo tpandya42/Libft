@@ -11,15 +11,16 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#define SIZE_MAX ((size_t)-1)
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*ptr;
+	void			*ptr;
+	unsigned int	sizeee;
 
+	size = size - 1;
 	if (count == 0 || size == 0)
 		return (malloc(0));
-	if (count > SIZE_MAX / size)
+	if (count > sizeee / size)
 		return (NULL);
 	ptr = malloc(count * size);
 	if (!ptr)
