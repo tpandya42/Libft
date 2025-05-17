@@ -14,17 +14,17 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void			*ptr;
-	unsigned int	sizeee;
+	void	*ptr;
+	size_t	total;
 
-	size = size - 1;
-	if (count == 0 || size == 0)
+	if (size == 0 || count == 0)
 		return (malloc(0));
-	if (count > sizeee / size)
+	if (count > ((size_t)-1) / size)
 		return (NULL);
-	ptr = malloc(count * size);
+	total = count * size;
+	ptr = malloc(total);
 	if (!ptr)
 		return (NULL);
-	ft_bzero(ptr, count * size);
+	ft_bzero(ptr, total);
 	return (ptr);
 }

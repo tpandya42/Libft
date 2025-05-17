@@ -3,7 +3,6 @@ NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
-SRC_DIR = srcs/
 SRC_NAMES = ft_atoi.c \
 			ft_bzero.c \
 			ft_calloc.c \
@@ -41,7 +40,6 @@ SRC_NAMES = ft_atoi.c \
 			ft_strlen.c \
 			ft_strmap.c \
 			ft_strmapi.c \
-			ft_strncat.c \
 			ft_strncmp.c \
 			ft_strncpy.c \
 			ft_strnew.c \
@@ -52,16 +50,13 @@ SRC_NAMES = ft_atoi.c \
 			ft_substr.c \
 			ft_tolower.c \
 			ft_toupper.c
-SRCS = $(addprefix $(SRC_DIR), $(SRC_NAMES))
+SRCS =  $(SRC_NAMES)
 OBJ_DIR = objs/
 OBJ_NAMES = $(SRC_NAMES:.c=.o)
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ_NAMES))
 
 HDR_NAMES = libft.h
-HDR_DIR = includes/
-HDRS = $(addprefix $(HDR_DIR),$(HDR_NAMES))
-
-HDR_INC = $(addprefix -I./, $(HDR_DIR))
+HDRS = $(HDR_NAMES)
 
 all: $(NAME) $(HDRS)
 
@@ -72,9 +67,11 @@ $(NAME): $(OBJ_DIR) $(OBJS) $(HDRS)
 $(OBJ_DIR):
 	@mkdir $@
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HDRS)
-	@$(CC) $(CFLAGS) $(HDR_INC) -c $< -o $@
+OBJ_DIR = objs/
 
+$(OBJ_DIR)%.o: %.c $(HDRS)
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 clean:
 	@rm -Rf $(OBJ_DIR)
 

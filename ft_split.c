@@ -83,10 +83,7 @@ char	**ft_split(char const *s, char c)
 		{
 			str[i] = ft_strnew(word_length(s, c));
 			if (!(str[i]))
-			{
-				free_memory(str, i - 1);
-				return (NULL);
-			}
+				return (free_memory(str, i - 1), NULL);
 			ft__strncpy(str[i], s, word_length(s, c));
 			s += word_length(s, c);
 			i++;
