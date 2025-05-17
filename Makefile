@@ -50,6 +50,12 @@ SRC_NAMES = ft_atoi.c \
 			ft_substr.c \
 			ft_tolower.c \
 			ft_toupper.c
+BONUS_NAMES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+BONUS_SRCS = $(BONUS_NAMES)
+BONUS_OBJS_NAMES = $(BONUS_NAMES:.c=.o)
+BONUS_OBJS = $(addprefix $(OBJ_DIR), $(BONUS_OBJ_NAMES))
+
+
 SRCS =  $(SRC_NAMES)
 OBJ_DIR = objs/
 OBJ_NAMES = $(SRC_NAMES:.c=.o)
@@ -63,6 +69,11 @@ all: $(NAME) $(HDRS)
 $(NAME): $(OBJ_DIR) $(OBJS) $(HDRS)
 	@ar rc $@ $(OBJS)
 	@ranlib $@
+
+bonus: $(OBJ_DIR) $(OBJS) $(BONUS_OBJS) $(HDRS)
+	@ar rc $(NAME) $(OBJS) $(BONUS_OBJS)
+	@ranlib $(NAME)
+
 
 $(OBJ_DIR):
 	@mkdir $@
