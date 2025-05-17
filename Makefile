@@ -53,7 +53,8 @@ SRC_NAMES = ft_atoi.c \
 BONUS_NAMES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 BONUS_SRCS = $(BONUS_NAMES)
 BONUS_OBJS_NAMES = $(BONUS_NAMES:.c=.o)
-BONUS_OBJS = $(addprefix $(OBJ_DIR), $(BONUS_OBJ_NAMES))
+BONUS_OBJS = $(addprefix $(OBJ_DIR), $(BONUS_OBJS_NAMES))
+
 
 
 SRCS =  $(SRC_NAMES)
@@ -91,4 +92,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re project
+.PHONY: all clean fclean re bonus
