@@ -14,12 +14,14 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	const unsigned char	*str;
+	const char	*str;
 
-	str = (const unsigned char *)s;
+	if (!s)
+		return (NULL);
+	str = (const char *)s;
 	while (*str)
 	{
-		if (*str == (unsigned char)c)
+		if (*str == (char)c)
 			return ((char *)str);
 		str++;
 	}
@@ -27,3 +29,13 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)str);
 	return (NULL);
 }
+/*
+#include <stdio.h>
+int	main(void)
+{
+	char	*str = "i don't know what the hell is going oon";
+	char	c = 'w';
+	printf("%s", ft_strchr(str, c));
+	return (0);
+	
+}*/
