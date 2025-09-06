@@ -83,7 +83,7 @@ OBJ_DIR = objs/
 
 $(OBJ_DIR)%.o: %.c $(HDRS)
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 clean:
 	@rm -Rf $(OBJ_DIR)
 
